@@ -12,11 +12,19 @@ package generador_contenido;
  */
 public class Generador_contenido {
 
+    int nAdmins;
+    int nComunidades;
+    int nCompanias;
+    int nBancos;
+    
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
     }
+    
+    
     
 }
