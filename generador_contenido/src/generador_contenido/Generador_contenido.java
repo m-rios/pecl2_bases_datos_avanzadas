@@ -25,6 +25,11 @@ public class Generador_contenido {
         // TODO code application logic here
     }
     
+    public void inserta_administrador(){
+        for(int i = 1; i <= nAdmins; i++){
+            
+        }
+    }
     
     
 }
