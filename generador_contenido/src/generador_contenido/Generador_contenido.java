@@ -16,6 +16,10 @@ public class Generador_contenido {
     int nComunidades;
     int nCompanias;
     int nBancos;
+    String tipoCarga;//C->COPY; I->Insert; P->Procedimiento
+    //el nombre del .sql sera comunidad_vecinos
+    
+    
     
     
     /**
@@ -31,5 +35,12 @@ public class Generador_contenido {
         }
     }
     
+    public void generar_banco(){
+        for (int i = 1; i <= nBancos; i++) {
+            if (tipoCarga.equals("I")){
+                
+            }
+        }
+    }
     
 }
