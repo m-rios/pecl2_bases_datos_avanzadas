@@ -45,6 +45,7 @@ public class Generador_contenido {
         nBancos = 100;
         nAdmins = 20000;
         tipoCarga = tipo;
+        nComunidades = 300000;
     }
     
     
@@ -87,7 +88,7 @@ public class Generador_contenido {
     public void generar_compania(){
         String value = "";
         String cif,nombre,direccion,sector,contacto,telefono = "";
-        for (int i = 1; i < nCompanias; i++) {
+        for (int i = 1; i <= nCompanias; i++) {
             cif = ""+i;
             nombre = "Nombre"+i;
             direccion = "Direccion"+i;
@@ -114,4 +115,11 @@ public class Generador_contenido {
             Logger.getLogger(Generador_contenido.class.getName()).log(Level.SEVERE, null, ex);
         }
     }    
+    
+    public void generar_comunidad_vecinos(){
+        for (int i = 1; i <= nComunidades; i++) {
+            
+            
+        }
+    }
 }
