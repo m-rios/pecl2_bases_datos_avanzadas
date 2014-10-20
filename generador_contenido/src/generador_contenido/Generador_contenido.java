@@ -9,6 +9,7 @@ package generador_contenido;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -117,9 +118,35 @@ public class Generador_contenido {
     }    
     
     public void generar_comunidad_vecinos(){
+        String cCom, nCol, nombre, calle, codigo_postal, poblacion, honorarios = "";
+        String value = "";
+        Random random = new Random();
         for (int i = 1; i <= nComunidades; i++) {
-            
-            
+            cCom = ""+i;
+            nCol = ""+random.nextInt(nAdmins+1)+1;
+            nombre = "'Nombre"+i+"'";
+            calle = "'Calle"+i+"'";
+            codigo_postal = ""+random.nextInt(10000)+1;
+            poblacion = "'Poblacion"+i+"'";
+            honorarios = ""+random.nextInt(10000)+"."+random.nextInt(100);
+            if (tipoCarga.equals("C")) {
+                value = "";
+            } else if (tipoCarga.equals("I")) {
+                value = "insert into comunidad_vecinos values("+cCom+","+nCol+","+nombre+",+"+calle+","+codigo_postal+","+poblacion+","+honorarios+")";
+            } else if (tipoCarga.equals("P")) {
+                value = "select * from insertar_comunidad_vecinos("+cCom+","+nCol+","+nombre+",+"+calle+","+codigo_postal+","+poblacion+","+honorarios+")";
+            }
+            value += ";\n";
+            try {
+                sql.write(value.getBytes());
+            } catch (IOException ex) {
+                Logger.getLogger(Generador_contenido.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        try {
+            sql.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Generador_contenido.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
