@@ -77,6 +77,31 @@ public class Generador_contenido {
         }
     }
     
+    public void inserta_cuenta() throws FileNotFoundException, IOException{
+        FileOutputStream file = new FileOutputStream("./cuenta.sql");
+        for(int i = 1; i <= nAdmins; i++){
+            if(tipoCarga.equals("I")){
+                for(int j = 0; i < 200000; i++){
+                    text = "INSERT INTO cuenta VALUES("+i+","+i+","+i+","+(1000 + (int)(Math.random()*100000))+","+i+","+i+")";
+                    bytesText = text.getBytes();
+                    file.write(bytesText);
+                }    
+            }else if (tipoCarga.equals("C")){
+                for(int j = 0; i < 200000; i++){
+                    text = i+","+i+","+i+","+(1000+(int)(Math.random()*100000))+","+i+","+i;
+                    bytesText = text.getBytes();
+                    file.write(bytesText);
+                } 
+            }else if(tipoCarga.equals("P")){
+                for(int j = 0; i < 200000; i++){
+                    text = "Select * from introducir_cuenta("+i+","+i+","+i+","+(1000 + (int)(Math.random()*100000))+","+i+","+i+")";
+                    bytesText = text.getBytes();
+                    file.write(bytesText);  
+                }   
+            }
+        }
+    }
+    
     public void generar_banco(){
         String value = "";
         String nombre;
