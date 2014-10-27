@@ -53,8 +53,27 @@ public class Generador_contenido {
     
     
     public void inserta_administrador(){
+       FileOutputStream file = new FileOutputStream("./administrador.sql");
         for(int i = 1; i <= nAdmins; i++){
-            
+            if(tipoCarga.equals("I")){
+                for(int j = 0; i < 200000; i++){
+                    text = "INSERT INTO administrador VALUES("+i+",\"DNI_"+i+"\",\"nombre"+i+"\"))";
+                    bytesText = text.getBytes();
+                    file.write(bytesText);
+                }    
+            }else if (tipoCarga.equals("C")){
+                for(int j = 0; i < 200000; i++){
+                    text = i+",\"DNI_"+i+"\",\"nombre_"+i+"\"";
+                    bytesText = text.getBytes();
+                    file.write(bytesText);
+                } 
+            }else if(tipoCarga.equals("P")){
+                for(int j = 0; i < 200000; i++){
+                    text = "Select * from introducir_administrador("+i+",\"DNI_"+i+"\",\"nombre"+i+"\")";
+                    bytesText = text.getBytes();
+                    file.write(bytesText);  
+                }   
+            }
         }
     }
     
